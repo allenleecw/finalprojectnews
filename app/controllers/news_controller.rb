@@ -1,7 +1,7 @@
 class NewsController < ApplicationController
 
   def index
-    @companies = []
+    @companies = [] #to find the company name using current user id
     current_user.favcompany_ids.each do |i|
       @companies << Favcompany.find_by(id: i).name
     end

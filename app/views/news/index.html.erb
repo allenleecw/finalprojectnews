@@ -47,7 +47,7 @@
   {name: "positive", data: @positiveline.sort_by {|i,j| i }},
   {name: "negative", data: @negativeline.sort_by {|i,j| i }}
 ] %>
-  <%= @line = {} %> #combined positive & negative
-  <%= @positiveline = {} %>#positive news hash
-  <%= @negativeline = {} %>#negative news hash
+  <% @line = {} %>
+  <% @positiveline = {} %>
+  <% @negativeline = {} %>
 <% end %>
