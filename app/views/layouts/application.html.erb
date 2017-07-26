@@ -3,13 +3,12 @@
   <head>
     <title>Checkbox</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="alternate" type="application/rss+xml" title="Codingfish RSS Feed" href="https://www.codingfish.com/feed?format=rss">
   </head>
-
   <body>
-  <% if signed_in? %>
+    <% if signed_in? %>
       Signed in as: <%= current_user.email %>
       <%= button_to 'Sign out', sign_out_path, method: :delete %>
     <% else %>

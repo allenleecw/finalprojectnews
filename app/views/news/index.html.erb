@@ -1,0 +1,53 @@
+<% @array.each do |item| %>
+  <header>
+    <h1><%= @companies[@num] %></h1>
+    <% @num += 1 %>
+  </header>
+  <% item["value"].each do |result| %>
+    <% if "#{$analyzer.sentiment result["description"]}" == "positive" %>
+      <% @positive += 1 %>
+    <% else %>
+      <% @negative += 1 %>
+    <% end %>
+    <% @line["#{result["datePublished"].to_date}"] = "#{$analyzer.score result["description"]}" %>
+    <% if "#{$analyzer.sentiment result["description"]}" == "positive" %>
+      <% @positiveline["#{result["datePublished"].to_date}"] = "#{$analyzer.score result["description"]}" %>
+    <% else %>
+      <% @negativeline["#{result["datePublished"].to_date}"] = ("#{$analyzer.score result["description"]}").to_f.abs%>
+    <% end %>
+    <div class="container">
+      <nav>
+        <ul>
+          <img src = <%=  result["image"]["thumbnail"]["contentUrl"] unless result["image"].nil?  %>>
+        </ul>
+      </nav>
+      <article>
+        <li><%= link_to result["name"], result["url"] %></li>
+        <br>
+        <br>
+        <%= result["description"].truncate_words(80) %><br>
+        <br>
+        <%= item['value'][0]['provider'][0]['name'] %>
+        <br>
+      </article>
+    </div>
+  <% end %>
+  <%= pie_chart({"Positive" => @positive, "Negative" => @negative}) %>
+  <% @positive = 0 %>
+  <% @negative = 0 %>
+  <br>
+  <br>
+  <p> Positive News Chart </p>
+  <%= column_chart(@positiveline.sort_by {|i,j| i }) %>
+  <p> Negative News Chart </p>
+  <%= column_chart(@negativeline.sort_by {|i,j| i }) %>
+  <p> Combined News Chart </p>
+  <%= column_chart(@line.sort_by {|i,j| i }) %>
+  <%= column_chart [
+  {name: "positive", data: @positiveline.sort_by {|i,j| i }},
+  {name: "negative", data: @negativeline.sort_by {|i,j| i }}
+] %>
+  <%= @line = {} %> #combined positive & negative
+  <%= @positiveline = {} %>#positive news hash
+  <%= @negativeline = {} %>#negative news hash
+<% end %>
