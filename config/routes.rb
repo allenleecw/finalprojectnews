@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
-
+  root 'news#index'
   resources :users, controller: "users", only: [:create] do
     resource :password,
       controller: "clearance/passwords",
