@@ -1,0 +1,2 @@
+module FavcompaniesHelper
+end
