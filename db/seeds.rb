@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Favcompany.create(name:"Maxis")
+Favcompany.create(name:"Air Asia")
+Favcompany.create(name:"Malaysian Airline")
+Favcompany.create(name:"Petronas")
+Favcompany.create(name:"Digi")
+Favcompany.create(name:"CIMB")
+Favcompany.create(name:"Maybank")
+Favcompany.create(name:"Astro Malaysia")
+Favcompany.create(name:"Eco World")
+Favcompany.create(name:"Nestle Malaysia")

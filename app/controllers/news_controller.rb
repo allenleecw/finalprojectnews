@@ -12,14 +12,13 @@ class NewsController < ApplicationController
     @line = {} #combined positive & negative
     @positiveline = {} #positive news hash
     @negativeline = {} #negative news hash
+
     @companies.each do |ele|
-
       require 'net/http'
-
       uri = URI('https://api.cognitive.microsoft.com/bing/v5.0/news/search')
       uri.query = URI.encode_www_form({
                                         'q' => ele,
-                                        'count' => '20',
+                                        'count' => '100',
                                         'offset' => '0',
                                         'mkt' => 'en-my',
                                         'safeSearch' => 'Moderate'
@@ -35,5 +34,9 @@ class NewsController < ApplicationController
       @second = JSON.parse(@first)
       @array << @second
     end
+  end
+
+  def chart
+    index
   end
 end
