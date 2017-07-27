@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get "/welcome" => "welcome#index", as: "welcome"
   resources :favcompanies
   resources :users, except: [:create, :new]
+  resources :news
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
