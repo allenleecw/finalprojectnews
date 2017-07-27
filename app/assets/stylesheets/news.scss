@@ -1,19 +1,13 @@
 // Place all the styles related to the News controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.scrollabletextbox {
-    height:300px;
-    width:900px;
-    font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
-    font-size: 82%;
-    overflow:scroll;
-}
-div.container {
+
+.container {
     width: 100%;
     border: 1px solid gray;
 }
 
-header, footer {
+.topic {
     padding: 1em;
     color: white;
     background-color: black;
@@ -21,25 +15,24 @@ header, footer {
     text-align: center;
 }
 
-nav {
+.nav {
     float: left;
     max-width: 160px;
     margin: 0;
     padding: 1em;
 }
 
-nav ul {
+.box {
     list-style-type: none;
     padding: 0;
 }
    
-nav ul a {
-    text-decoration: none;
-}
 
-article {
+
+.article {
     margin-left: 170px;
     border-left: 1px solid gray;
     padding: 1em;
     overflow: hidden;
 }
+

@@ -1,8 +1,8 @@
 <% @array.each do |item| %>
-  <header>
+  <header class="topic">
     <h1><%= @companies[@num] %></h1>
     <% @num += 1 %>
-  </header>
+  </header >
   <% item["value"].first(5).each do |result| %>
     <% if "#{$analyzer.sentiment result["description"]}" == "positive" %>
       <% @positive += 1 %>
@@ -10,8 +10,8 @@
       <% @negative += 1 %>
     <% end %>
     <div class="container">
-      <nav>
-        <ul>
+      <nav class="nav">
+        <ul class="nav box">
           <% if result["image"].nil? == true %>
             <img src = "https://www.shearwater.com/wp-content/plugins/lightbox/images/No-image-found.jpg" height="100" width="100">
           <% else %>
@@ -19,7 +19,7 @@
           <% end %>
         </ul>
       </nav>
-      <article>
+      <article class="article">
         <li>
           <% if "#{$analyzer.sentiment result["description"]}" == "positive" %>
             <%= link_to result["name"], result["url"], {style: "color: blue"} %>
@@ -33,6 +33,8 @@
         <%= result["description"].truncate_words(80) %><br>
         <p> Source: 
           <%= item['value'][0]['provider'][0]['name'] %></p>
+        <p> Date Published: 
+          <%= result["datePublished"].to_date %></p>
       </article>
     </div>
   <% end %>
