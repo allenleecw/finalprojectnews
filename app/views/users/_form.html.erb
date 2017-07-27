@@ -39,8 +39,11 @@ body
             <%= f.label :password %>
               <%= f.password_field :password, required_autocomplete: "off" %>
           </div>
+
+          <div class="button button-block">
+            <%= f.submit "Get started" %>
+          </div>
           
-          <button type="submit" class="button button-block"/>Get Started</button>
           
           </form>
           <% end %>
@@ -61,10 +64,13 @@ body
            <%= f.label :password %>
               <%= f.password_field :password, required_autocomplete: "off" %>
           </div>
+
+          <div class="button button-block">
+            <%= f.submit "Log In" %>
+          </div>
           
           <p class="forgot"><a href="#">Forgot Password?</a></p>
           
-          <button class="button button-block"/>Log In</button>
           
           <% end %>
 
