@@ -28,20 +28,20 @@ body
           <%= form_with model: @user do |f| %>
             <div class="signfield-wrap">
               <%= f.label :name %>
-              <%= f.text_field :name, required_autocomplete: "off" %>
+              <%= f.text_field :name, required_autocomplete: "off", class:"sign_input" %>
             </div>
 
           <div class="signfield-wrap">
              <%= f.label :email%>
-              <%= f.text_field :email, required_autocomplete: "off" %>
+              <%= f.text_field :email, required_autocomplete: "off", class:"sign_input" %>
           </div>          
           <div class="signfield-wrap">
             <%= f.label :password, "Password" %>
-              <%= f.password_field :password, required_autocomplete: "off" %>
+              <%= f.password_field :password, required_autocomplete: "off", class:"sign_input" %>
           </div>
 
           <div class="button button-block">
-            <%= f.submit "Get started" %>
+            <%= f.submit "Get started", class:"sign_input" %>
           </div>
           
           
@@ -58,16 +58,16 @@ body
 
             <div class="signfield-wrap">
            <%= f.label :email%>
-              <%= f.text_field :email, required_autocomplete: "off" %>
+              <%= f.text_field :email, required_autocomplete: "off", class:"sign_input" %>
           </div>
           
           <div class="signfield-wrap">
            <%= f.label :password %>
-              <%= f.password_field :password, required_autocomplete: "off" %>
+              <%= f.password_field :password, required_autocomplete: "off", class:"sign_input" %>
           </div>
 
           <div class="button button-block">
-            <%= f.submit "Log In" %>
+            <%= f.submit "Log In", class:"sign_input" %>
           </div>
           
           <p class="forgot"><a href="#">Forgot Password?</a></p>
