@@ -20,9 +20,9 @@
 @import "http://fonts.googleapis.com/icon?family=Material+Icons";
 @import "http://propeller.in/components/icons/css/google-icons.css";
 
-$body-bg: #c1bdba;
+$body-bg: white;
 $form-bg: #13232f;
-$white: #ffffff;
+$white: #FEFEFE;
 
 $main: #1ab188;
 $main-light: lighten($main,5%);
@@ -58,7 +58,7 @@ a {
   }
 }
 
-.form {
+.signform {
   background:rgba($form-bg,.9);
   padding: 40px;
   max-width:600px;
@@ -104,7 +104,7 @@ a {
 }
 
 
-h1 {
+signtext {
   text-align:center;
   color:$white;
   font-weight:$thin;
@@ -162,7 +162,7 @@ textarea {
   resize: vertical;
 }
 
-.field-wrap {
+.signfield-wrap {
   position:relative;
   margin-bottom:40px;
 }
