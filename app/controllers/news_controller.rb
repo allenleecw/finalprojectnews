@@ -18,7 +18,7 @@ class NewsController < ApplicationController
       uri = URI('https://api.cognitive.microsoft.com/bing/v5.0/news/search')
       uri.query = URI.encode_www_form({
                                         'q' => ele,
-                                        'count' => '',
+                                        'count' => '100',
                                         'offset' => '0',
                                         'mkt' => 'en-my',
                                         'safeSearch' => 'Moderate'
@@ -33,6 +33,11 @@ class NewsController < ApplicationController
       @first = response.body
       @second = JSON.parse(@first)
       @array << @second
+      if params[:number].nil?
+       @number = 5
+     else
+       @number = params[:number].to_i
+     end
     end
   end
 

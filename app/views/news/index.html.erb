@@ -1,43 +1,94 @@
-<% @array.each do |item| %>
-  <header class="topic">
-    <h1><%= @companies[@num] %></h1>
-    <% @num += 1 %>
-  </header >
-  <% item["value"].first(5).each do |result| %>
-    <% if "#{$analyzer.sentiment result["description"]}" == "positive" %>
-      <% @positive += 1 %>
-    <% else %>
-      <% @negative += 1 %>
-    <% end %>
-    <div class="container">
-      <nav class="nav">
-        <ul class="nav box">
-          <% if result["image"].nil? == true %>
-            <img src = "https://www.shearwater.com/wp-content/plugins/lightbox/images/No-image-found.jpg" height="100" width="100">
-          <% else %>
-            <img src = <%=  result["image"]["thumbnail"]["contentUrl"] unless result["image"].nil?  %>>
+<style type="text/css">
+  body {
+    background-color: white;
+  }
+</style>
+
+<br>
+<br>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    <div class="favcomp_form">
+    <h4>Filter Your Company</h4>
+      <%= form_for current_user do |form| %>
+        <div class="field">
+          <%= hidden_field_tag "user[favcompany_ids][]", nil %>
+          <% Favcompany.all.each do |favcompany| %>
+            <%= check_box_tag "user[favcompany_ids][]", favcompany.id, current_user.favcompany_ids.include?(favcompany.id) %>
+            <%= favcompany.name %></br>
           <% end %>
-        </ul>
-      </nav>
-      <article class="article">
-        <li>
-          <% if "#{$analyzer.sentiment result["description"]}" == "positive" %>
-            <%= link_to result["name"], result["url"], {style: "color: blue"} %>
-          <% elsif "#{$analyzer.sentiment result["description"]}" == "negative" %>
-            <%= link_to result["name"], result["url"], {style: "color: red"} %>
-          <% else %>
-            <%= link_to result["name"], result["url"], {style: "color: blue"} %>
-          <% end %>
-        </li>
-        <br>
-        <%= result["description"].truncate_words(80) %><br>
-        <p> Source: 
-          <%= item['value'][0]['provider'][0]['name'] %></p>
-        <p> Date Published: 
-          <%= result["datePublished"].to_date %></p>
-      </article>
+        </div>
+        <div class="actions">
+          <%= form.submit "Update Listing" %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-  <br>
-  <br>
-<% end %>
+    <!-- <div class="container2"> -->
+    <div class="col-md-9">
+    <div class="container2">
+        <div class="dropdown" style="float:right;">
+         <button class="dropbtn">No. of Articles</button>
+         <form class="dropdown-content">
+           <a href="/?number=5" name="number" value="5">5</a>
+           <a href="/?number=10" name="number" value="10">10</a>
+           <a href="/?number=20" name="number" value="20">20</a>
+         </form>
+        </div>
+     <% @array.each do |item| %>
+        <div class="news_topic">
+          <h1 style="font-family: 'Chonburi', cursive;"><%= @companies[@num] %></h1>
+          <% @num += 1 %>
+        </div >
+          <% item["value"].first(@number).each do |result| %>
+            <% if "#{$analyzer.sentiment result["description"]}" == "positive" %>
+              <% @positive += 1 %>
+            <% else %>
+              <% @negative += 1 %>
+            <% end %>
+        <nav class="news_nav">
+        <!-- <div class="col-md-3"> -->
+        <div class = "article_rows">
+          <ul class="nav box">
+            <% if result["image"].nil? == true %>
+              <img class = "news_image" src = "http://votd.tv/public/img/404_nb.gif" title = <%= $analyzer.sentiment result["description"] %>  height="120" width="110">
+            <% else %>
+              <img class = "news_image" src = <%=  result["image"]["thumbnail"]["contentUrl"] unless result["image"].nil?  %> title = <%= $analyzer.sentiment result["description"] %> height="120" width="110">
+            <% end %>
+          </ul>
+        <!-- </div> -->
+        </nav>
+        <!-- <div class="col-md-6"> -->
+          <article class="news_article">
+            <% if "#{$analyzer.sentiment result["description"]}" == "positive" %>
+              <li style="list-style: none; font-size:20px;">
+                <img class = "happy_img" title = "Positive News" src = "https://s-media-cache-ak0.pinimg.com/originals/25/b9/24/25b924f1d18fea2c7dfcb26a9905c1e8.png" height="25" width="25">
+                <%= link_to result["name"], result["url"], {style: "color: blue"} %>
+              </li>
+            <% else %>
+              <li style="list-style: none; font-size:20px;">
+                <img class = "sad_img" title = "Negative News" src = "https://cdn.iconscout.com/public/images/icon/free/png-512/cry-face-sad-sob-tear-emoji-355f50fa6b2b22cf-512x512.png" height="25" width="25">
+                  <%= link_to result["name"], result["url"], {style: "color: red"} %>
+              </li>
+            <% end %>
+            <br>
+            <p style="font-family: 'Lemonada', cursive;"><%= result["description"].truncate_words(50) %></p><br>
+            <p style="font-size:14px; font-family: 'Gloria Hallelujah', cursive;">Source: 
+              <%= item['value'][0]['provider'][0]['name'] %>  
+            </p>
+            <p style="font-size:14px; font-family: 'Gloria Hallelujah', cursive;">Date Published: 
+              <%= result["datePublished"].to_date %>
+            </p>
+          </article>
+          <!-- </div> -->
+        <!-- </div> -->
+        <!-- </div> -->
+        <% end %>
+      <% end %> 
+    </div>
+    <!-- </div> -->
+  </div>
+</div>

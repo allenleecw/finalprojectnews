@@ -1,5 +1,7 @@
+<br>
+<br>
 <% @array.each do |item| %>
-  <header>
+  <header class="news_topic container">
     <h1><%= @companies[@num] %></h1>
     <% @num += 1 %>
   </header>
@@ -16,6 +18,7 @@
       <% @negativeline["#{result["datePublished"].to_date}"] = ("#{$analyzer.score result["description"]}").to_f.abs%>
     <% end %>
   <% end %>
+  <div class="container  news_container">
   <%= pie_chart({"Positive" => @positive, "Negative" => @negative}) %>
   <% @positive = 0 %>
   <% @negative = 0 %>
@@ -31,4 +34,9 @@
   <% @line = {} %>
   <% @positiveline = {} %>
   <% @negativeline = {} %>
+  </div>
+  <br>
+  <br>
 <% end %>
+<br>
+<br>
