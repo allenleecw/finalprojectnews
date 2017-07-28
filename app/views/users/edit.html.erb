@@ -1,6 +1,12 @@
-<h1>Editing User</h1>
-
-<%= render 'form2', user: @user %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<br><br><div class="card">
+ <img class="img-circle" src="http://www.freeiconspng.com/uploads/am-a-19-year-old-multimedia-artist-student-from-manila--21.png">
+ <div class="profile-container">
+ <%= form_for (@user) do |form| %>
+ <p><%= form.text_field :name, id: :user_name %></p>
+ <p><%= form.text_field :email, id: :user_email %></p>
+ <div class="profile-button">
+ <%= form.submit "Save changes" %>
+ </div>
+ <% end %>
+  </div>
+</div>
