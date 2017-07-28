@@ -1,19 +1,20 @@
-<center><img src = "http://i.imgur.com/rrylxeA.png" alt = "Test Image" />
+<center><img src = "http://i.imgur.com/fVjDbEW.png" alt = "Test Image" />
 
 <style type="text/css">
 body
  {
-      background-image: url(https://images6.alphacoders.com/481/481285.jpg);
+      background-image: url(http://www.interconmexico.com/images/mapa.png);
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center;
+      background-size: cover;
       max-width: 99%;
       max-height: 99%;
      
  }
  </style>
 
-<div class="form">
+<div class="signform">
       
       <ul class="tab-group">
         <li class="tab active"><a href= "#signup" >Sign Up</a></li>
@@ -22,19 +23,19 @@ body
       
       <div class="tab-content">
         <div id="signup">   
-          <h1>Sign Up for Free</h1>
+          <signtext>Sign Up for Free</signtext>
           
           <%= form_with model: @user do |f| %>
-            <div class="field-wrap">
+            <div class="signfield-wrap">
               <%= f.label :name %>
               <%= f.text_field :name, required_autocomplete: "off" %>
             </div>
 
-          <div class="field-wrap">
+          <div class="signfield-wrap">
              <%= f.label :email%>
               <%= f.text_field :email, required_autocomplete: "off" %>
           </div>          
-          <div class="field-wrap">
+          <div class="signfield-wrap">
             <%= f.label :password, "Password" %>
               <%= f.password_field :password, required_autocomplete: "off" %>
           </div>
@@ -50,17 +51,17 @@ body
         </div>
         
         <div id="login">   
-          <h1>Welcome Back!</h1>
+          <signtext>Welcome Back!</signtext>
           
         
           <%= form_for :session, url: session_path do |f| %>
 
-            <div class="field-wrap">
+            <div class="signfield-wrap">
            <%= f.label :email%>
               <%= f.text_field :email, required_autocomplete: "off" %>
           </div>
           
-          <div class="field-wrap">
+          <div class="signfield-wrap">
            <%= f.label :password %>
               <%= f.password_field :password, required_autocomplete: "off" %>
           </div>

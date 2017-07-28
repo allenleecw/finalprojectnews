@@ -18,7 +18,7 @@ class NewsController < ApplicationController
       uri = URI('https://api.cognitive.microsoft.com/bing/v5.0/news/search')
       uri.query = URI.encode_www_form({
                                         'q' => ele,
-                                        'count' => '100',
+                                        'count' => '',
                                         'offset' => '0',
                                         'mkt' => 'en-my',
                                         'safeSearch' => 'Moderate'
