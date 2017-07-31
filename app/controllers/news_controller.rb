@@ -21,7 +21,8 @@ class NewsController < ApplicationController
                                         'count' => '100',
                                         'offset' => '0',
                                         'mkt' => 'en-my',
-                                        'safeSearch' => 'Moderate'
+                                        'safeSearch' => 'Moderate',
+                                        'sortby'=> 'date'
       })
 
       request = Net::HTTP::Get.new(uri.request_uri)
@@ -34,10 +35,10 @@ class NewsController < ApplicationController
       @second = JSON.parse(@first)
       @array << @second
       if params[:number].nil?
-       @number = 5
-     else
-       @number = params[:number].to_i
-     end
+        @number = 5
+      else
+        @number = params[:number].to_i
+      end
     end
   end
 

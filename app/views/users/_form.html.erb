@@ -1,82 +1,62 @@
-<center><img src = "http://i.imgur.com/fVjDbEW.png" alt = "Test Image" />
-
-<style type="text/css">
-body
- {
-      background-image: url(http://www.interconmexico.com/images/mapa.png);
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-position: center;
-      background-size: cover;
-      max-width: 99%;
-      max-height: 99%;
-     
- }
- </style>
-
-<div class="signform">
-      
-      <ul class="tab-group">
-        <li class="tab active"><a href= "#signup" >Sign Up</a></li>
-        <li class="tab"><a href= "#login" >Log In</a></li>
-      </ul>
-      
-      <div class="tab-content">
-        <div id="signup">   
-          <signtext>Sign Up for Free</signtext>
-          
-          <%= form_with model: @user do |f| %>
-            <div class="signfield-wrap">
-              <%= f.label :name %>
-              <%= f.text_field :name, required_autocomplete: "off", class:"sign_input" %>
-            </div>
-
+<center><img src = "http://i.imgur.com/ZrOQEWd.png" alt = "Test Image" width="200" height="200"/>
+  <style type="text/css">
+    body
+     {
+          background-image: url(http://www.interconmexico.com/images/mapa.png);
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-position: center;
+          background-size: cover;
+          max-width: 99%;
+          max-height: 99%;
+    
+     }
+  </style>
+  <div class="signform">
+    <ul class="tab-group">
+      <li class="tab active"><a href= "#signup" >Sign Up</a></li>
+      <li class="tab"><a href= "#login" >Log In</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="signup">
+        <signtext>Sign Up for Free</signtext>
+        <%= form_with model: @user do |f| %>
           <div class="signfield-wrap">
-             <%= f.label :email%>
-              <%= f.text_field :email, required_autocomplete: "off", class:"sign_input" %>
-          </div>          
+            <%= f.label :name %>
+            <%= f.text_field :name, required_autocomplete: "off", class:"sign_input" %>
+          </div>
+          <div class="signfield-wrap">
+            <%= f.label :email%>
+            <%= f.text_field :email, required_autocomplete: "off", class:"sign_input" %>
+          </div>
           <div class="signfield-wrap">
             <%= f.label :password, "Password" %>
-              <%= f.password_field :password, required_autocomplete: "off", class:"sign_input" %>
+            <%= f.password_field :password, required_autocomplete: "off", class:"sign_input" %>
           </div>
-
           <div class="button button-block">
             <%= f.submit "Get started", class:"sign_input" %>
           </div>
-          
-          
-          </form>
-          <% end %>
-
+        </form>
+      <% end %>
+    </div>
+    <div id="login">
+      <signtext>Welcome Back!</signtext>
+      <%= form_for :session, url: session_path do |f| %>
+        <div class="signfield-wrap">
+          <%= f.label :email%>
+          <%= f.text_field :email, required_autocomplete: "off", class:"sign_input" %>
         </div>
-        
-        <div id="login">   
-          <signtext>Welcome Back!</signtext>
-          
-        
-          <%= form_for :session, url: session_path do |f| %>
-
-            <div class="signfield-wrap">
-           <%= f.label :email%>
-              <%= f.text_field :email, required_autocomplete: "off", class:"sign_input" %>
-          </div>
-          
-          <div class="signfield-wrap">
-           <%= f.label :password %>
-              <%= f.password_field :password, required_autocomplete: "off", class:"sign_input" %>
-          </div>
-
-          <div class="button button-block">
-            <%= f.submit "Log In", class:"sign_input" %>
-          </div>
-          
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
-          
-          
-          <% end %>
-
+        <div class="signfield-wrap">
+          <%= f.label :password %>
+          <%= f.password_field :password, required_autocomplete: "off", class:"sign_input" %>
         </div>
-        
-      </div><!-- tab-content -->
-      
-</div> <!-- /form -->
+        <div class="button button-block">
+          <%= f.submit "Log In", class:"sign_input" %>
+        </div>
+        <p class="forgot"><a href="#">Forgot Password?</a></p>
+      <% end %>
+    </div>
+  </div>
+  <!-- tab-content -->
+</div>
+ <!-- /form -->
